@@ -12,7 +12,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>{% block title %}Salon samochodowy{% endblock %}</title>
+<style>
+  .hello-msg{
+  color: white;
+  }
+
+</style>
 </head>
+
 
 <body>
 <!-- Header -->
@@ -26,13 +33,13 @@
         <a class="nav-link" href="{% url 'main_page' %}">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Products</a>
+        <a class="nav-link" href="{% url 'products' %}">Products</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">About Us</a>
+        <a class="nav-link" href="{% url 'about' %}">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">Contact</a>
+        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
       </li>
     </ul>
   </div>
@@ -50,14 +57,8 @@
     <div class="w3-row-padding">
       <div class="w3-col s4">
         <h4>Contact</h4>
-        <p>Questions? Go ahead.</p>
-        <form action="/action_page.php" target="_blank">
-          <p><input class="w3-input w3-border" type="text" placeholder="Name" name="Name" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Email" name="Email" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Subject" name="Subject" required></p>
-          <p><input class="w3-input w3-border" type="text" placeholder="Message" name="Message" required></p>
-          <button type="submit" class="w3-button w3-block w3-black">Send</button>
-        </form>
+        <p>Questions? Go ahead.</p><br><br><br>
+        <a href="{% url 'sendemails' %}" target="_blank" style="color:lightgreen; font-size: 30px; ">Send email!</a>
       </div>
 
       <div class="w3-col s4">
@@ -70,8 +71,8 @@
 
       <div class="w3-col s4 w3-right">
         <h4>Store</h4>
-        <p><i class="fa fa-fw fa-map-marker"></i> Company Name</p>
-        <p><i class="fa fa-fw fa-phone"></i> 0044123123</p>
+        <p><i class="fa fa-fw fa-map-marker"></i> WILK RAFAL sp.z o.o</p>
+        <p><i class="fa fa-fw fa-phone"></i> +48795001750</p>
         <p><i class="fa fa-fw fa-envelope"></i> rafalwilk4ti1@gmail.com</p>
         <h4>We accept</h4>
         <p><i class="fa fa-fw fa-cc-amex"></i> Cash</p>
