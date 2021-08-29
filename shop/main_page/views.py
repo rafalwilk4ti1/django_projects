@@ -134,3 +134,9 @@ def catalog(request):
     context = {'car': car}
 
     return render(request, 'main_page/catalog.html', context)
+
+def purchase(request):
+    clients = Client.objects.all()
+    context = {'client': clients}
+
+    return render(request, 'main_page/purchase.html', context)

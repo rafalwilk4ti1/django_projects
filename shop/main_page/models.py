@@ -13,7 +13,7 @@ class Car(models.Model):
     header_image = models.ImageField(null=True, blank=True, upload_to='images/')
 
     def __str__(self):
-        return f'{self.name} {self.model}'
+        return self.model
 
 
 class Newsletter(models.Model):
@@ -45,4 +45,8 @@ class Client(models.Model):
     email = models.EmailField(max_length=40, null=True)
     phone_cell = models.IntegerField(unique=True)
     chosen_car = models.ForeignKey(Car, on_delete=models.CASCADE)
+
+#
+# class Order(models.Model):
+
 

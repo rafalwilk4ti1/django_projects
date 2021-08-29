@@ -4,18 +4,42 @@
 
 {% block title %} Our cars {% endblock %}
 
-{% block welcome %} <h1> Welcome to our catalog! </h1>
-<h4> Here you can find all cars we have </h4>
+{% block welcome %} <h1 class="w3-center"> Welcome to our catalog! </h1>
+
+<h4 class="w3-center"> Here you can find all cars we have </h4>
+
 {% endblock %}
 
-{% block content %}
-{% for c in car %}
-    <p>{{ c.name }}</p>
-    <p>{{ c.model }}</p>
-    <p>{{ c.vin }}</p>
-    <p>{{ c.year }}</p>
-    <p>{{ c.price_currency }} {{ c.name }}</p>
-    <p>{{ c.header_image }}</p>
 
+
+{% block content %}
+
+<div class="w3-container w3-center">
+{% for c in car %}
+    <div class="w3-row w3-padding-32 w3-hover-shadow w3-center">
+        <div class="w3-col m4 12 w3-left w3-display-container" style="height:380px;">
+        <br><br><br>
+        <p class="w3-wide">{{ c.name }}</p>
+        <p class="w3-wide">{{ c.model }}</p>
+<!--        <p>{{ c.vin }}</p>-->
+        <p class="w3-wide">{{ c.year }}</p>
+        <p class="w3-wide">{{ c.price_currency }} {{ c.price }}</p>
+        </div>
+        <div class="w3-col m4 12 " style="width: 550px">
+        <img src="{{ c.header_image.url }}" alt="" width='100%;'>
+        </div>
+        <div class="w3-col m4 12 w3-right w3-display-container" style="height:380px;">
+            <div class="w3-display-middle">
+            <button class="w3-round-xlarge w3-button w3-middle w3-blue w3-block"
+                    style="width: 150%;" onclick="location.href='{% url 'purchase' %}'">Purchase</button>
+            </div>
+        </div>
+    </div>
 {% endfor %}
+</div>
+
+
+
+
+
 {% endblock %}
