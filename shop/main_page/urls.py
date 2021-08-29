@@ -13,5 +13,6 @@ urlpatterns = [
     path('products/', views.products, name='products'),
     path('about/', views.about, name='about'),
     path('newsletter/', views.newsletter, name='newsletter'),
-    path('sendemails', views.mail_letter, name='sendemails')
+    path('sendemails', views.mail_letter, name='sendemails'),
+    path('catalog/', views.catalog, name='catalog')
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Car, Newsletter, MailMessage
+from .models import Car, Newsletter, MailMessage, Client
 from django.forms import TextInput, Textarea
 from django.db import models
 
@@ -16,3 +16,4 @@ class NewsletterAdmin(admin.ModelAdmin):
 
 admin.site.register(Newsletter, NewsletterAdmin)
 admin.site.register(MailMessage)
+admin.site.register(Client)

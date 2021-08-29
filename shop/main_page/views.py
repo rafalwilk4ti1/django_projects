@@ -9,7 +9,7 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required # used to check if user is logged
 from .forms import CreateUserForm, NewsletterUser, MailMessageForm
-from .models import Car, Newsletter
+from .models import Car, Newsletter, Client
 from django.core.mail import send_mail
 from django_pandas.io import read_frame
 
@@ -127,3 +127,10 @@ def mail_letter(request):
         'form': form,
     }
     return render(request, 'main_page/send_emails.html', context)
+
+
+def catalog(request):
+    car = Car.objects.all()
+    context = {'car': car}
+
+    return render(request, 'main_page/catalog.html', context)
