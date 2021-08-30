@@ -22,7 +22,8 @@
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-user"></i></span>
 							</div>
-							{{form.name}}
+
+							{{ form.name }}
 						</div>
 						<div class="input-group mb-2">
 							<div class="input-group-append">
@@ -53,6 +54,19 @@
 			</div>
 		</div>
 	</div>
+<script>
+var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Name..';
+		form_fields[1].placeholder='Surname..';
+		form_fields[2].placeholder='Email..';
+		form_fields[3].placeholder='Phone cell...';
+		form_fields[4].placeholder='Chosen car...';
+
+
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+</script>
 <!--class Client(models.Model):-->
 <!--    name = models.CharField(max_length=50)-->
 <!--    surname = models.CharField(max_length=40)-->

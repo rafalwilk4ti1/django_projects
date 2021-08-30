@@ -1,36 +1,31 @@
 {% extends 'main_page/base.html' %}
 
+{% load static %}
+
 
 {% block title %}Main Page {% endblock %}
 
 {% block welcome %}
-<div class="w3-container w3-padding w3-center w3-border w3-large">
-    <h4 class="w-center ">Welcome to Car Saloon! </h4>
+<div class="w3-container w3-padding w3-center w3-border w3-pale-green">
+    <h4 class="w3-center w3-bold w3-large w3-text-black" style="text-shadow: 1px 1px 0 #444">Welcome to Car Saloon! </h4>
 </div>
 {% endblock %}
 
 {% block content %}
 <!-- Displaying cars -->
-<div class="w3-row-padding w3-center">
-    {% for c in car %}
-        {% if c.id <= 10 %}
-    <br>
-    <div class="w3-col l12">
-        <div class="w3-display-container ">
-            <img src="{{ c.header_image.url }}" width="60%" height="60%" class=" w3-opacity-min w3-hover-opacity-off">
-        </div>
-        <div class="w3-display-container">
-            <br>
-            <p class="w3-wide w3-bold">NAME: <b>{{ c.name }}</b></p>
-            <p class="w3-wide">MODEL: <b>{{ c.model }}</b></p>
-            <p class="w3-wide">PRODUCTION YEAR: <b>{{ c.year }}</b></p>
-            <p class="w3-wide">PRICE: <b>{{c.price_currency}}{{ c.price }}</b></p>
+<div class="w3-display-container" style="background-image:url('{% static 'images/main_photo.jpg' %}');
+                background-repeat: no-repeat; background-size: 100%;width: 1900px; height: 850px">
 
-        </div>
+    <div class="w3-display-bottommiddle w3-padding-64">
+        <button class='w3-btn w3-block w3-padding w3-margin-bottom w3-blue w3-round-xxlarge' type="submit">Find your car</button>
+        <button class='w3-round-xxlarge w3-btn w3-block w3-padding w3-green' type="submit">Purchase</button>
     </div>
 
-        {% endif %}
-    {% endfor %}
+
+    </div>
 </div>
+
+
+
 {% endblock %}
 
