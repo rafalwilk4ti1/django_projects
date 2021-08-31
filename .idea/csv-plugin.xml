@@ -38,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/shop/main_page/templates/main_page/send_emails.html">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/shop/main_page/urls.py">
           <value>
             <Attribute>

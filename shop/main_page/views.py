@@ -1,14 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.forms import inlineformset_factory
-from django.contrib.auth.forms import UserCreationForm
+from django.core.paginator import Paginator
 
 from django.contrib.auth import authenticate, login, logout
-
 from django.contrib import messages
-
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required # used to check if user is logged
-from .forms import CreateUserForm, NewsletterUser, MailMessageForm
+from .forms import CreateUserForm, NewsletterUser, MailMessageForm, ClientForm
 from .models import Car, Newsletter, Client
 from django.core.mail import send_mail
 from django_pandas.io import read_frame
@@ -69,11 +66,6 @@ def about(request):
     context = {'car': car}
     return render(request, 'main_page/about.html', context)
 
-@login_required(login_url='login')
-def products(request):
-    car = Car.objects.all()
-    context = {'car': car}
-    return render(request, 'main_page/products.html', context)
 
 @login_required(login_url='login')
 def contact(request):
@@ -129,14 +121,35 @@ def mail_letter(request):
     return render(request, 'main_page/send_emails.html', context)
 
 
+def purchase(request):
+    submitted = False
+    if request.method == "POST":
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Excellent, we will send you our offer, and call you.')
+            return HttpResponseRedirect('/purchase?submitted=True')
+    else:
+        form = ClientForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    form = ClientForm
+    return render(request, 'main_page/purchase.html', {'form': form, 'submitted':submitted})
+
+
 def catalog(request):
     car = Car.objects.all()
-    context = {'car': car}
+
+    car_paginator = Paginator(car, 10)
+
+    page_num = request.GET.get('page')
+
+    page = car_paginator.get_page(page_num)
+
+    context = {
+        'car': car_paginator.count,
+        'page': page
+    }
 
     return render(request, 'main_page/catalog.html', context)
-
-def purchase(request):
-    clients = Client.objects.all()
-    context = {'client': clients}
-
-    return render(request, 'main_page/purchase.html', context)

@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from .models import Car, Newsletter, MailMessage, Client
+from phonenumber_field.formfields import PhoneNumberField
 
 
 class CreateUserForm(UserCreationForm):
@@ -29,10 +30,11 @@ class MailMessageForm(forms.ModelForm):
         fields = '__all__'
 
 
+# Create a Client form
 class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
-        fields = ('name', 'surname', 'email', 'phone_cell', 'chosen_car')
+        fields = ('name', 'surname', 'email', 'phone_cell', 'model_car')
 
 
 

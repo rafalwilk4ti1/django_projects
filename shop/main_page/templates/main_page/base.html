@@ -9,12 +9,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'base_style.css' %}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>{% block title %}Salon samochodowy{% endblock %}</title>
+<link rel="stylesheet" href="{% static 'main_page/base.css' %}">
+<!--  <script src="{% static 'main_page/script.js' %}"></script>-->
+    <title>{% block title %} Salon samochodowy {% endblock %}</title>
 <style>
   .hello-msg{
   color: white;
@@ -36,7 +37,7 @@
         <a class="nav-link" href="{% url 'main_page' %}">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'products' %}">Products</a>
+        <a class="nav-link" href="{% url 'catalog' %}">Catalog</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'about' %}">About Us</a>

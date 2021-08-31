@@ -5,15 +5,29 @@ from django.db import models
 
 # Register your models here.
 
-admin.site.register(Car)
+
+admin.site.register(MailMessage)
 
 
+@admin.register(Newsletter)
 class NewsletterAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'date_added',)
-    models.TextField: {'widget': Textarea(attrs={'rows':2, 'cols': 10})}
-    models.CharField: {'widget': TextInput(attrs={'size': '20'})}
+    list_filter = ('name', 'email')
+    search_fields = ('name', 'email')
+    ordering = ('name', 'email')
 
 
-admin.site.register(Newsletter, NewsletterAdmin)
-admin.site.register(MailMessage)
-admin.site.register(Client)
+@admin.register(Car)
+class CarAdmin(admin.ModelAdmin):
+    list_display = ('name', 'model', 'year', 'vin', 'price')
+    list_filter = ('name', 'year', 'price')
+    search_fields = ('name', 'model')
+    ordering = ('name', 'price')
+
+@admin.register(Client)
+class ClientAdmin(admin.ModelAdmin):
+    list_display = ('name', 'surname', 'email', 'phone_cell', 'model_car')
+    list_filter = ('surname', 'model_car')
+    search_fields = ('surname', 'model_car')
+    ordering = ('name', 'surname', 'email', 'model_car')
+

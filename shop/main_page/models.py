@@ -1,7 +1,9 @@
 from django.db import models
-
+from django.urls import reverse
+from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
+
 
 class Car(models.Model):
     name = models.TextField(max_length=30)
@@ -12,8 +14,11 @@ class Car(models.Model):
     price = models.DecimalField(max_digits=11, decimal_places=2,)
     header_image = models.ImageField(null=True, blank=True, upload_to='images/')
 
+    class Meta:
+        ordering = ('price',)
+
     def __str__(self):
-        return self.model
+        return f'{self.name} {self.model}'
 
 
 class Newsletter(models.Model):
@@ -33,20 +38,9 @@ class MailMessage(models.Model):
         return self.title
 
 
-# class CreditCard(models.Model):
-#     name_surname = models.CharField(max_length=60)
-#     card_number = models.IntegerField()
-#     month_expire = models.DateTimeField()
-
-
 class Client(models.Model):
     name = models.CharField(max_length=50)
     surname = models.CharField(max_length=40)
     email = models.EmailField(max_length=40, null=True)
-    phone_cell = models.IntegerField(unique=True)
-    chosen_car = models.ForeignKey(Car, on_delete=models.CASCADE)
-
-#
-# class Order(models.Model):
-
-
+    phone_cell = PhoneNumberField(unique=True)
+    model_car = models.ForeignKey(Car, on_delete=models.CASCADE, null=True, related_name='model_car')
