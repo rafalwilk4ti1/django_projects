@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'main_page.apps.MainPageConfig',
     'crispy_forms',
     'phonenumber_field',
+    'django.contrib.gis',
+    'easy_maps',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +149,5 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mr.wilkrafal@gmail.com'
 EMAIL_HOST_PASSWORD = 'Ravix@12345'
+
+

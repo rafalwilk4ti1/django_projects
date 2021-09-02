@@ -68,12 +68,6 @@ def about(request):
 
 
 @login_required(login_url='login')
-def contact(request):
-    car = Car.objects.all()
-    context = {'car': car}
-    return render(request, 'main_page/contact.html', context)
-
-@login_required(login_url='login')
 def newsletter(request):
     if request.method == 'POST':
         form = NewsletterUser(request.POST)
@@ -153,3 +147,14 @@ def catalog(request):
     }
 
     return render(request, 'main_page/catalog.html', context)
+
+
+@login_required(login_url='login')
+def contact(request):
+    car = Car.objects.all()
+    clients = Client.objects.all()
+    context = {'car': car,
+               'client': clients}
+
+
+    return render(request, 'main_page/contact.html', context)
